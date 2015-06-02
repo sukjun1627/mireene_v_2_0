@@ -1,8 +1,12 @@
 package DB;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DBjob extends DataManager {
+import DB.DataManager;
+
+public class DBjob extends DataManager{
 	private String query="SELECT user_code FROM User";
 	private String query2="SELECT password FROM User";
 	private String query3="SELECT user_code FROM User";
@@ -24,7 +28,7 @@ public class DBjob extends DataManager {
 	
 	
 	
-public void insert_user(String a, String b){
+public void insert_user(String a, String b) throws SQLException, IOException{
 		
 		String fquery = new String();
 		String id = "'"+a+"'";
@@ -42,7 +46,7 @@ public void insert_user(String a, String b){
 	
 		void_query(fquery);
 	}
-	public boolean login(String a, String b){
+	public boolean login(String a, String b) throws SQLException, IOException{
 		
 		String fquery = new String();
 		String id = "'"+a+"'";
@@ -60,7 +64,7 @@ public void insert_user(String a, String b){
 			return true;
 		}
 	}
-	public ArrayList<String> favorite(String a){
+	public ArrayList<String> favorite(String a) throws SQLException, IOException{
 		ArrayList<String> list=new ArrayList<String>();
 		ArrayList<String> list2=new ArrayList<String>();
 		String fquery = new String();

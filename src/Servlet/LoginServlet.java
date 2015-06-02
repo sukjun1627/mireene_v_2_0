@@ -2,6 +2,8 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -25,9 +27,7 @@ public class LoginServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init();
 		userDataMan = new DBjob();
-		userDataMan.setDbUrl(config.getInitParameter("dbUrl"));
-		userDataMan.setDbUser(config.getInitParameter("dbUser"));
-		userDataMan.setDbPass(config.getInitParameter("dbPass"));
+		
 		try {
 			Class.forName(config.getInitParameter("jdbcDriver"));
 		} catch (Exception e) {
@@ -55,8 +55,13 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html");
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		boolean result;
-		result=userDataMan.login(id,password);
+		boolean result = false;
+		try {
+			result=userDataMan.login(id,password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<head>");

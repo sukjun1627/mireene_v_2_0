@@ -2,6 +2,7 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletConfig;
@@ -27,9 +28,6 @@ public class MainServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init();
 		userDataMan = new DBjob();
-		userDataMan.setDbUrl(config.getInitParameter("dbUrl"));
-		userDataMan.setDbUser(config.getInitParameter("dbUser"));
-		userDataMan.setDbPass(config.getInitParameter("dbPass"));
 		try {
 			Class.forName(config.getInitParameter("jdbcDriver"));
 		} catch (Exception e) {
@@ -55,16 +53,21 @@ public class MainServlet extends HttpServlet {
 	protected void processRequest(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+		ArrayList<String> test = new ArrayList<String>();
 		String user_code = "1";
 		
-		ArrayList<String> test=userDataMan.favorite(user_code);
+		try {
+			test=userDataMan.favorite(user_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<title>  </title>");
 		out.println("</head>");
 		out.println("<body>");
-		
+		out.println(test);
 		out.println("<br></br>good!!");
 		out.println("</body>");
 		out.println("</html>");		

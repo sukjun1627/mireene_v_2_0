@@ -1,135 +1,76 @@
 package DB;
 
 import java.sql.*;
-import java.util.ArrayList;
-
+import java.io.*;
+import java.util.*;
 
 public class DataManager {
-	private String dburl = "";
-	private String dbuser = "";
-	private String dbpass = "";
 
-	public void setDbUrl(String url) {
-		dburl = url;
-	}
 	
-	public  String getDbUrl() {
-		return dburl;
-	}
 	
-	public void setDbUser(String user) {
-		dbuser = user;
-	}
-	
-	public  String getDbUser() {
-		return dbuser;
-	}
-	
-	public void setDbPass(String pass) {
-		dbpass = pass;
-	}
-	
-	public  String getDbPass () {
-		return dbpass;
-	}
-	
-	public  Connection getConnection() {
+	public static void void_query(String a) throws SQLException, IOException {
 		
-		Connection conn = null;
+		Connection con = getConnection();
 		try {
-			conn = DriverManager.getConnection(getDbUrl(),getDbUser(),getDbPass());			
-		} catch (SQLException e) {
-			e.printStackTrace();
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(a);			
+			while(rs.next())
+				
+			rs.close();
 		}
-		return conn;
-	}
-	
-	public void closeConnection(Connection conn) {
-		if(conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	public String String_query(String a) {
-		String list = new String();
-		Connection conn = getConnection();
-		if(conn != null) {
-			ResultSet rs = null;
-			PreparedStatement ps = null;
-			try {
-				ps = conn.prepareStatement(a);
-				rs = ps.executeQuery();								
-				while(rs.next()) {					
-					list=(rs.getString(1));
-				}				
-			} catch(SQLException e) {
-				e.printStackTrace();
-			}
-			finally {
-				try {
-					rs.close();
-					ps.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-				closeConnection(conn);	
-			}
-		}
-		return list;
-	}
-	public void void_query(String a)
-	{
-		Connection conn = getConnection();
-		if(conn != null) {
-			
-			PreparedStatement ps = null;
-			try {
-				Statement st = conn.createStatement();
-				st.executeUpdate(a);
-				ps = conn.prepareStatement(a);					
-			} catch(SQLException e) {
-				e.printStackTrace();
-			}
-			finally {
-				try {
-					ps.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-				closeConnection(conn);	
-			}
+		finally {
+			con.close();
 		}
 		
 	}
-	public ArrayList<String> list_query(String a) {
-		ArrayList<String> list = new ArrayList<String>();
-		Connection conn = getConnection();
-		if(conn != null) {
-			ResultSet rs = null;
-			PreparedStatement ps = null;
-			try {
-				ps = conn.prepareStatement(a);
-				rs = ps.executeQuery();								
-				while(rs.next()) {					
-					list.add(rs.getString(1));
-				}				
-			} catch(SQLException e) {
-				e.printStackTrace();
-			}
-			finally {
-				try {
-					rs.close();
-					ps.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-				closeConnection(conn);	
-			}
+	
+	public static String String_query(String a) throws SQLException, IOException {
+		String list = new String();
+		Connection con = getConnection();
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(a);			
+			while(rs.next())
+				list=rs.getString(1);
+			rs.close();
+		}
+		finally {
+			con.close();
 		}
 		return list;
 	}
+
+	public static ArrayList<String> list_query(String a) throws SQLException, IOException {
+		ArrayList<String> list = new ArrayList<String>();
+		Connection con = getConnection();
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(a);			
+			while(rs.next())
+				list.add(rs.getString(1));
+			rs.close();
+		}
+		finally {
+			con.close();
+		}
+		return list;
+	}
+	
+
+	public static Connection getConnection() throws SQLException, IOException {
+		Properties props = new Properties();
+		FileInputStream in = new FileInputStream("C:/Users/database.properties");
+		props.load(in);
+		in.close();
+		
+		String drivers = props.getProperty("jdbc.drivers");
+		if(drivers != null)
+			System.setProperty("jdbc.drivers", drivers);
+		String url = props.getProperty("jdbc.url");
+		String username = props.getProperty("jdbc.username");
+		String password = props.getProperty("jdbc.password");
+		
+		return DriverManager.getConnection(url, username, password);
+	}
+
 }
