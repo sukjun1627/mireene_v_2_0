@@ -10,7 +10,7 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="col-md-3" id="left-side-menu">
+	<div id="left-side-menu">
 		<div class="list-group" id="sub_menu">
   <a href="#" class="list-group-item active">Mr. Chef</a>
   <a href="#" class="list-group-item">Girlfriend</a>

@@ -8,9 +8,20 @@
 <Link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+int i = 0;
+function star(){
+	
+	i++;
+	
+	alert(i);
+}
+
+
+</script>
 </head>
 <body>
-<div class="col-md-9" id="main">
+<div id="main">
 		<div class="panel-group" id="accordion">
 <!-- 패널 +부분 -->		
   <div class="panel panel-default">
@@ -87,6 +98,11 @@
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body">
         get방식으로 메소드를 받아 다시 카테고리를 추가하는부분 난해난해
+        <nav>
+  <input type = "button" onclick = "star()" value = "좋아요">
+  <a href="/css/">댓글달기</a>
+ 
+  		</nav>
       </div>
     </div>
   </div>
