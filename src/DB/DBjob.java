@@ -50,6 +50,7 @@ public void insert_user(String a, String b){
 		fquery=query+" WHERE user_e_mail="+id+"and password="+password+";";
 		System.out.println(fquery);
 		String result = String_query(fquery);
+		System.out.println(result);
 		if(result.isEmpty())
 		{
 			return false;

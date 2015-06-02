@@ -10,12 +10,12 @@
 <div class="input-group" id="Account" align="center" >
     <h1>미리내</h1>
     <div class="col-sm-9">
-    <form method="GET" action="/LoginServlet">
+    <form method="GET" action="./LoginServlet">
     <div class=".col-md-4">
-      <input type="text" class="form-control" id=txtID placeholder="UserID">
+      <input type="text" class="form-control" id="id" placeholder="UserID" name="id">
     </div>
     <div class=".col-md-4">
-      <input type="password" class="form-control" id=Password>
+      <input type="password" class="form-control" id="password" name="password">
     </div>
     <span class="input-group-btn">
         <a href="Mainpage.html"><input type="submit" class="btn btn-primary btn-md" value="접속"></a>
