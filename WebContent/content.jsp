@@ -16,6 +16,14 @@ function star(){
 	
 	alert(i);
 }
+$(document).ready(function()
+		
+		//생성하는거
+		$('#super').hide(); //초기에 입력버튼 숨기기위해 숨김.
+		$("#comment").click(function(){
+	       $("#super").toggle();
+	    });
+		});
 
 
 </script>
@@ -51,7 +59,7 @@ function star(){
     <div class="panel-heading">
       <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-          <img src="./img1.jpg" width="32" height="32" class="thmub_img"  alt=""/>
+          <img src="./img1.JPG" width="32" height="32" class="thmub_img"  alt=""/>
           	장성룡
           2015.05.18
               <img src="./star.png" width="32" height="32" class="thmub_img"  alt="" title="50" align="right">
@@ -61,6 +69,28 @@ function star(){
     <div id="collapseOne" class="panel-collapse collapse in">
       <div class="panel-body">
         저는 오이라고합니다 
+        <nav>
+  			<a href="#">좋아요</a>
+  			<a href="#" id="comment">댓글달기</a>
+ 
+  		</nav>
+      </div>
+       <form class="navbar-form navbar-left" >
+     
+        <div class="form-group" >
+   <input type="text" class="form-control" value="댓글을 입력하세요" width="70%;">
+   </div>
+   <input type="submit" value="전송" class="btn btn-default">
+   </form>
+    </div>
+    <div>
+      <div>
+       
+   <div class="well well-sm">
+<img src="./img1.JPG" width="32" height="32" class="thmub_img"  alt=""/>
+          	장성룡
+          아아아아아아아아아아아아아아
+</div>
       </div>
     </div>
   </div>
@@ -69,7 +99,7 @@ function star(){
       <h4 class="panel-title">
 
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-              <img src="./img2.jpg" width="32" height="32" class="thmub_img"  alt=""/>
+              <img src="./img2.JPG" width="32" height="32" class="thmub_img"  alt=""/>
           최석준
   2015.05.18
     <img src="./star.png" width="32" height="32" class="thmub_img"  alt="" title="20" align="right">
@@ -80,7 +110,10 @@ function star(){
     <div id="collapseTwo" class="panel-collapse collapse">
       <div class="panel-body">
        이런식으로 글을 입력하긴 할건데 여기 그림추가하는 건 file API를 사용해야하더라고.
-             
+   <form>
+   <input type="text" value="댓글을 입력하세요">
+   <input type="submit" value="전송">
+   </form>          
       </div>
     </div>
   </div>
@@ -99,7 +132,7 @@ function star(){
       <div class="panel-body">
         get방식으로 메소드를 받아 다시 카테고리를 추가하는부분 난해난해
         <nav>
-  <input type = "button" onclick = "star()" value = "좋아요">
+  <a href="#" onclick ="star()" value = "좋아요">
   <a href="/css/">댓글달기</a>
  
   		</nav>
