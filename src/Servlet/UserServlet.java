@@ -91,7 +91,7 @@ public class UserServlet extends HttpServlet {
 			out.println("<h1>" + user + "</h1>");
 			out.println("<h1>" + password + "</h1>");
 			out.println("<h1>" + login_list + "</h1>");
-		out.println("<a href=\"index.html\">"
+		out.println("<a href=\"index.jsp\">"
 				+ "Click here to go back to index page " + "</a>");
 		out.println("<br></br>new member come on!!");
 		out.println("<form method='get' action='new_user'>"+"<input type='text' id='name' name='name'/>"
