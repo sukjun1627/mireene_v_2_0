@@ -10,7 +10,7 @@
 <div class="input-group" id="Account" align="center" >
     <h1>미리내</h1>
     <div class="col-sm-9">
-    <form method="GET" action="./LoginServlet">
+    <form method="GET" action="/LoginServlet">
     <div class=".col-md-4">
       <input type="text" class="form-control" id=txtID placeholder="UserID">
     </div>
