@@ -13,10 +13,8 @@ public class DataManager {
 		Connection con = getConnection();
 		try {
 			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(a);			
-			while(rs.next())
-				
-			rs.close();
+			st.executeUpdate(a);	
+			
 		}
 		finally {
 			con.close();

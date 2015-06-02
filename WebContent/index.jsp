@@ -18,11 +18,12 @@
       <input type="password" class="form-control" id="password" name="password">
     </div>
     <span class="input-group-btn">
-        <a href="Mainpage.html"><input type="submit" class="btn btn-primary btn-md" value="접속"></a>
-        <a href="Register_page.html"><button class="btn btn-primary btn-md" type="button">회원가입</button></a>
+        <input type="submit" class="btn btn-primary btn-md" value="접속">
+        
         
     </span>
     </form>
+    <a href="join_page.jsp"><button class="btn btn-primary btn-md" type="button">회원가입</button></a>
     
     <div>
     <a href="Facebook.html"><img src="./F-logo.png" width="32" height="32" class="thmub_img"  alt=""/></a>

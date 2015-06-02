@@ -54,10 +54,11 @@ public class UserServlet extends HttpServlet {
 		HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/html");
-	
+		String e_mail = request.getParameter("join_id");
+		String password = request.getParameter("pass");
 		PrintWriter out = response.getWriter();
 		try {
-			userDataMan.insert_user("test","tset");
+			userDataMan.insert_user(e_mail,password);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
