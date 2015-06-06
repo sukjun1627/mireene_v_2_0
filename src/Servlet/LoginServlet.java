@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private DBjob userDataMan;
-
+//////////////////////////////
 	public void init(ServletConfig config) throws ServletException {
 		super.init();
 		userDataMan = new DBjob();
